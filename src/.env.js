@@ -1,0 +1,4 @@
+export const REACT_APP_SPOTIFY_CLIENT_ID="883773e32bd04f35a74a76e4c1e1116a"
+export const REACT_APP_SPOTIFY_SECRET_ID="c555aed59d3e42a1b89efa9162442e1a"
+// REACT_APP_REDIRECT_URL=http://localhost:3000/redirect
+  

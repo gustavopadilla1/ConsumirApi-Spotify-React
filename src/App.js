@@ -57,12 +57,14 @@ function App() {
     }));
   }
 
-
-
-
   return (
     <div className="App">
-      <Button onClick={getSpotifyToken} variant="contained"color="success" sx={{marginTop:5}}>Solicitar Token </Button>
+      <Grid contener>
+      <Button onClick={getSpotifyToken} variant="contained" sx={{marginTop:5}}>Solicitar Token </Button>
+      <Button variant="contained" color='success'sx={{marginTop:5, marginLeft:5}} >
+        <a style={{ textDecoration: "none", color: "white" }} href='https://github.com/gustavopadilla1/ConsumirApi-Spotify-React.git'> Git Hub </a>
+      </Button>
+      </Grid>
       <Grid container sx={{marginTop:5}}>
             <Grid item xs={6}>
                 <TextField
@@ -88,16 +90,13 @@ function App() {
                     </Select>
                 </FormControl>
             </Grid>
-            <Grid item xs={6}>
-                <Button variant="contained" onClick={Buscar}>
-                    Search
+            <Grid item xs={6} >
+                <Button sx={{marginRight:4}} variant="contained" onClick={Buscar}>
+                    Buscar
                 </Button>
             </Grid>
-</Grid>
+    </Grid>
        
-
-
-
         <Grid container padding={10} spacing={7} className='card'>
         
         

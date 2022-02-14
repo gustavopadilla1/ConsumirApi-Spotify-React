@@ -1,3 +1,4 @@
+// import { useState } from "react";
 import axios from "axios";
 import qs from "qs";
 import Cookies from "universal-cookie";
@@ -38,47 +39,45 @@ export const getSpotifyToken = async () => {
   }
 };
 
-// export const spotifySearch = async (type = "artist", query = "The Beatles") => {
-//   //request token using getAuth() function
-//   const access_token = cookies.get("token");
-//   if (type === "all") {
-//     type = ["album", "artist", "track"];
-//   }
-//   const api_url = `https://api.spotify.com/v1/search?type=${type}&q=${query}&include_external=audio`;
-//   try {
-//     const { data } = await axios.get(api_url, {
-//       headers: {
-//         Authorization: `Bearer ${access_token}`,
-//       },
-//     });
-//     return data;
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
+export const spotifySearch = async(type = "artist", query = "The Beatles") => {
 
-
-export const spotifySearch = async (ParamArray) => {
-   const access_token = cookies.get("token");
-
-  const url = new URL("https://api.spotify.com/v1/search");
-
-  for(const item of ParamArray){
-  const key = Object.keys(item)[0];
-  url.searchParams.append(key, item[key]);
+  const access_token = cookies.get("token");
+  if (type === "all") {
+      type = ["album", "artist", "track"];
   }
+  const api_url = `https://api.spotify.com/v1/search?type=${type}&q=${query}&include_external=audio`;
   try {
-        const { data } = await axios.get(url, {
+      const response = await axios.get(api_url, {
           headers: {
-            Authorization: `Bearer ${access_token}`,
+              Authorization: `Bearer ${access_token}`,
           },
-        });
-
-        console.log(data.artists.items);
-        console.log(data);
-        return data;        
-      } catch (error) {
-        console.log(error);
-      }
+      });
+      return response.data;
+  } catch (error) {
+      console.log(error);
+  }
 };
+
+
+// export const spotifySearch = async (ParamArray) => {
+//    const access_token = cookies.get("token");
+
+//   const url = new URL("https://api.spotify.com/v1/search");
+
+//   for(const item of ParamArray){
+//   const key = Object.keys(item)[0];
+//   url.searchParams.append(key, item[key]);
+//   }
+//   try {
+//         const {data} = await axios.get(url, {
+//           headers: {
+//             Authorization: `Bearer ${access_token}`,
+//           },
+//         });        
+        
+//         return data;        
+//       } catch (error) {
+//         console.log(error);
+//       }
+// };
 
